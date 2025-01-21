@@ -1,26 +1,35 @@
-//LEGGERE LE ISTRUZIONI NEL FILE README.md
-
-//Import di Classi Java necessarie al funzionamento del programma
 import java.util.Scanner;
 
-// Classe principale, con metodo main
 class Esercizio {
-    // Il programma parte con una chiamata a main().
-    public static void main(String args[])
-    {
-        //Variabili del programma
-        String nome;
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
-        //Creo l'oggetto in per l'input da tastiera
-        Scanner in = new Scanner( System.in );
+        System.out.println("Inserisci la dimensione del vettore:");
+        int n = Integer.parseInt(in.nextLine());
+        int[] v = new int[n];
 
-        //Leggo l'input da tastiera
-        System.out.print("Inserisci il tuo nome: ");
-        nome = in.nextLine();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Inserisci il " + (i + 1) + "° valore:");
+            v[i] = Integer.parseInt(in.nextLine());
+        }
 
-        //Output del nome acquisito da tastiera
-        System.out.println("Ciao "+nome+"!");
+        for (int i = 0; i < n - 1; i++) {
+            boolean duplicato = false;
+            int contatore = 1;
+
+            for (int j = i + 1; j < n; j++) {
+                if (v[i] == v[j]) {
+                    System.out.println("Il valore " + v[i] + " occorre nelle posizioni " + i + " e " + j);
+                    contatore++;
+                    duplicato = true;
+                }
+            }
+
+            if (duplicato) {
+                System.out.println("E' stato inserito " + contatore + " volte.");
+            }
+        }
+
+        in.close();
     }
 }
-
-//LEGGERE LE ISTRUZIONI NEL FILE README.md
